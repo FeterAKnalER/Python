@@ -1,0 +1,49 @@
+#在参数名前面的*表示该参数为可变参数
+def add(*args):
+    total = 0
+    for val in args:
+        total += val
+    return total
+print(add(1,432,43.21))
+
+##计算最大公约数和最小公倍数的函数
+def divisor(a,b):
+    if a > b:
+        a,b = b,a
+    for val in range(a,0,-1):
+        if(a % val ==0 and b % val ==0):
+          return val
+def multiple (a,b):
+    return a*b//divisor(a,b)
+number1 = int(input())
+number2 = int(input())
+print(divisor(number1,number2),multiple(number1,number2)) 
+
+##判断回文数
+def palindromic(num):
+    temp = num
+    total = 0
+    while temp > 0:
+        total = total * 10 + temp % 10
+        temp //= 10
+    if(total == num):
+        print("%d是回文数"%num)
+    else:
+        print("%d不是回文数"%num)
+
+##判断素数
+def prime(num):
+    is_prime = True
+    for val in range(2,num):
+        if(num % val == 0):
+            is_prime = False
+    if(is_prime == False):
+         print("%d不是素数"%num)
+    else:
+         print("%d是素数"%num)
+
+##判断回文素数
+if __name__ == '__main__':
+    num = int(input())
+    palindromic(num)
+    prime(num)
