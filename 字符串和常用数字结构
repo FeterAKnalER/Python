@@ -324,28 +324,29 @@ if __name__ == '__main__':
     for i in range(1,100):
       print(produce_code(code_len=8)) """
 
-### 返回文件名后缀
-""" def get_suffix(file_name):
+### 返回文件后缀名
+def get_suffix(file_name):
     suffix = ''
-    for val in range(0,len(file_name)-1,-1):
+    for val in range(len(file_name)-1,0,-1):
         if file_name[val]=='.':
             needed_val = val
             break
-    for _ in range(needed_val,len(file_name)-1):
-        suffix += file_name[_]
+    for _ in range(needed_val+1,len(file_name)):
+        suffix += file_name[_]  ## suffix = file_name[needed_val+1:]
     return suffix
 if __name__ == '__main__':
-    str = input()
-    print(get_suffix(str)) """
+    filename = input('请输入文件名：')
+    print('文件的后缀名是:',get_suffix(filename))
+    
+'''
 def get_suffix(filename, has_dot=False):
     """
     获取文件名的后缀名
-
     :param filename: 文件名
     :param has_dot: 返回的后缀名是否需要带点
     :return: 文件的后缀名
     """
-    pos = filename.rfind('.')
+    pos = filename.rfind('.')       ## rfind函数用法:返回()内字符最后一次出现的下标
     if 0 < pos < len(filename) - 1:
         index = pos if has_dot else pos + 1
         return filename[index:]
@@ -354,3 +355,4 @@ def get_suffix(filename, has_dot=False):
 if __name__ == '__main__':
     filename = input('请输入文件名：')
     print(get_suffix(filename))
+'''
