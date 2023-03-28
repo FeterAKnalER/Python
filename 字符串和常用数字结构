@@ -356,3 +356,49 @@ if __name__ == '__main__':
     filename = input('请输入文件名：')
     print(get_suffix(filename))
 '''
+## 返回列表中前二大小的值
+""" def max(x):
+    m0,m1 = (x[0],x[1]) if x[0] > x[1] else (x[1],x[0])
+    for index in range(2,len(x)):
+        if x[index] > m0:
+            m1 = m0
+            m0 = x[index]     
+        elif x[index] > m1:
+            m1 = x[index]
+    return m0,m1
+if __name__ == '__main__':
+    x = eval(input())              ## 将输入的字符串转换为列表
+    print(max(x)) """
+
+""" ## 计算天数
+def days(date):
+    Day = [31,28,31,30,31,30,31,31,30,31,30,31]
+    year = int(date[0:4])    
+    month = int(date[4:6])
+    day = int(date[6:])
+    if year % 400 == 0 or (year % 4 == 0 and year % 100 != 0):
+        Day[1]=29
+    total_day = 0
+    for val in range(month-1):
+        total_day += Day[val]
+    return (total_day + day)
+if __name__ == '__main__':
+    date_now = input()
+    print(days(date_now))  
+ """
+
+## 杨辉三角   *
+""" def triangle(row):
+    Yang = [[]] * row
+    for val in range(len(Yang)):
+        Yang[val] = [None] * (val+1)
+        for col in range(len(Yang[val])):
+            if col ==0 or col == val:
+                Yang[val][col] == 1
+            else:
+                Yang[val][col] = Yang[val-1][col] + Yang[val-1][col-1]
+            print(Yang[val][col],end='\t')
+        print()
+if __name__ == '__main__':
+    triangle(int(input()))
+ """
