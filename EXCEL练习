@@ -1,0 +1,81 @@
+import os
+import openpyxl
+
+"""workbook = openpyxl.load_workbook('D:/1.xlsx')"""
+##输出表格名称
+"""print(workbook.sheetnames)"""    
+
+"""sheet = workbook['离心时间']"""
+##获取表格大小
+'''print(sheet.dimensions)'''          
+
+'''cell1 = sheet['A1']
+cell2 = sheet['G9']
+cell3 = sheet['A2']
+cell4 = sheet.cell(row=3,column=4)
+
+print(cell1.value,cell2.value,cell3.value,cell4.value)'''
+
+##获取数据所在的位置
+'''print(cell4.value,cell4.row,cell4.column,cell4.coordinate)'''
+
+"""cell5 = sheet['A2:F9']
+print(cell5)"""
+
+##输出每个单元格数据,对于多行/多列/区间数据的输出，需要用双循环
+"""for i in cell5:
+    for j in i:
+        print(j.value)"""
+
+##对于单行/单列数据的输出，单循环即可
+"""cell6 = sheet['A']
+for i in cell6:
+    print(i.value)"""
+
+##按行获取值
+"""for i in sheet.iter_rows(min_row = 2,max_row = 10,min_col = 1,max_col = 5):
+    for j in i:
+        print(j.value)"""
+
+##按列获取值
+"""for i in sheet.iter_cols(min_row=2,max_row=17,min_col=1,max_col=5):
+    for j in i:
+        print(j.value)"""
+
+##获取行数/列数
+"""print(sheet.max_row)
+print(sheet.max_column)"""
+
+##创建新的excel表
+"""workbook = openpyxl.Workbook()
+sheet = workbook.active
+sheet.title = 'new'
+workbook.save('D:/2.xlsx')"""
+
+##修改单元格数据，另存为excel(修改文件名则创建新文件，否则为在原文件上修改)
+"""sheet['A2'] = '第一天'
+workbook.save('D:/3.xlsx')  """  
+
+workbook = openpyxl.load_workbook('D:/mU&U-test.xlsx')
+sheet = workbook.active
+sheet.title = '数据'
+
+##按行插入数据
+"""data = [
+    ['XH111','Fluc',' ',84,10,30,1100,98],
+    ['XH141','Fluc',' ',88,10,30,1100,98]
+]
+for row in data:
+    sheet.append(row)"""
+
+##插入空行空列
+""" sheet.insert_rows(idx=44,amount=2)
+sheet.insert_cols(idx=11,amount=2) """
+##删除行/列
+""" sheet.delete_rows(idx=50)
+sheet.delete_rows(idx=49,amount=2)         ##删除49向下2行(包括49行)
+sheet.delete_cols(idx=20,amount=3) """
+
+
+
+workbook.save('D:/mU&U-test.xlsx')
